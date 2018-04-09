@@ -4,4 +4,8 @@
 #include "EnumOne.h"
 
 
-ENUM(Name2, (one2)(two2)(three2))
+ENUM(Name2,
+     (one2)
+     (two2)
+     (three2)
+     )

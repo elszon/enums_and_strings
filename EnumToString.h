@@ -4,9 +4,6 @@
 #include <boost/preprocessor.hpp>
 #include <boost/utility/string_view.hpp>
 
-template <typename E>
-boost::optional<E> toEnum(boost::string_view);
-
 // Used in toString() method
 #define ENUM_TO_STR(unused, _, elem)                                                               \
     if (e == elem)                                                                                 \
@@ -24,8 +21,7 @@ boost::optional<E> toEnum(boost::string_view);
         return boost::none;                                                                        \
     }                                                                                              \
                                                                                                    \
-    template <>                                                                                    \
-    boost::optional<NAME> toEnum<NAME>(boost::string_view s) {                                     \
+    boost::optional<NAME> toEnum##NAME(boost::string_view s) {                                     \
         BOOST_PP_SEQ_FOR_EACH(STR_TO_ENUM, ~, SEQ)                                                 \
         return boost::none;                                                                        \
     }
